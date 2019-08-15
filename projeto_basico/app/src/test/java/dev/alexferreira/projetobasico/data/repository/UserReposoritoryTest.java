@@ -11,6 +11,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import java.net.ConnectException;
+
 import static org.junit.Assert.*;
 
 public class UserReposoritoryTest {
@@ -47,13 +49,15 @@ public class UserReposoritoryTest {
     @Test
     public void saveUser_throwsErrorOfNet_repositoryWrapInException() {
         String errorMsg = "Erro de host não encontrado";
-        Mockito.doThrow(new NetworkErrorException(errorMsg)).when(userSource).saveUser(Mockito.any(UserModel.class));
+        Mockito.doThrow(new IllegalArgumentException(errorMsg)).when(userSource).saveUser(Mockito.any(UserModel.class));
 
         try {
             userReposoritory.saveUser(fakeUser);
         } catch (RepositoryException e) {
-            if (e.getCause() instanceof NetworkErrorException) {
+            if (e.getCause() instanceof IllegalArgumentException) {
                 Assert.assertEquals(errorMsg, e.getCause().getMessage());
+            } else {
+                fail("Não lancou ex do tipo correto");
             }
         }
     }
