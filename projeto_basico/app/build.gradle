@@ -34,6 +34,9 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-android:${mockitoVersion}", {
         exclude group: 'com.android.support'
     }
+    testImplementation "org.mockito:mockito-android:${mockitoVersion}", {
+        exclude group: 'com.android.support'
+    }
     androidTestImplementation("com.android.support.test:runner:${androiTestVersion}", {
         exclude group: 'com.android.support'
     })
