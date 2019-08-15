@@ -1,6 +1,5 @@
 package dev.alexferreira.projetobasico.data.repository;
 
-import android.accounts.NetworkErrorException;
 import dev.alexferreira.projetobasico.data.model.UserModel;
 import dev.alexferreira.projetobasico.data.source.IUserSource;
 import org.junit.Assert;
@@ -11,14 +10,14 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.net.ConnectException;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 public class UserReposoritoryTest {
 
-    @Mock private IUserSource userSource;
-    @Mock private UserModel fakeUser;
+    @Mock
+    private IUserSource userSource;
+    @Mock
+    private UserModel fakeUser;
 
     @InjectMocks
     private UserReposoritory userReposoritory;
@@ -61,4 +60,53 @@ public class UserReposoritoryTest {
             }
         }
     }
+
+    @Test
+    public void saveUser_withNullUser_ThrowError() {
+        String errorMsg = "Model passado é nulo";
+
+        try {
+            userReposoritory.saveUser(null);
+            fail("Não lancou ex do tipo correto");
+        } catch (RepositoryException e) {
+            if (e.getCause() instanceof IllegalArgumentException) {
+                Assert.assertEquals(errorMsg, e.getCause().getMessage());
+            } else {
+                fail("Não lancou ex do tipo correto");
+            }
+        }
+    }
+
+    @Test
+    public void saveUser_throwsError_repositoryWrapInException() {
+        String errorMsg = "Erro id invalido";
+        Mockito.doThrow(new IllegalArgumentException(errorMsg)).when(userSource).getUser(Mockito.anyString());
+
+        try {
+            userReposoritory.saveUser(fakeUser);
+        } catch (RepositoryException e) {
+            if (e.getCause() instanceof IllegalArgumentException) {
+                Assert.assertEquals(errorMsg, e.getCause().getMessage());
+            } else {
+                fail("Não lancou ex do tipo correto");
+            }
+        }
+    }
+
+    @Test
+    public void getUser_throwsError_repositoryWrapInException() {
+        String errorMsg = "Id passado é nulo";
+
+        try {
+            userReposoritory.getUser(null);
+            fail("Não lancou ex do tipo correto");
+        } catch (RepositoryException e) {
+            if (e.getCause() instanceof IllegalArgumentException) {
+                Assert.assertEquals(errorMsg, e.getCause().getMessage());
+            } else {
+                fail("Não lancou ex do tipo correto");
+            }
+        }
+    }
+
 }
