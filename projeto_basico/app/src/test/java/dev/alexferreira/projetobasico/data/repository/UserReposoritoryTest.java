@@ -65,6 +65,7 @@ public class UserReposoritoryTest {
     public void saveUser_withNullUser_ThrowError() {
         String errorMsg = "Model passado é nulo";
 
+        Mockito.doThrow(new IllegalArgumentException(errorMsg)).when(userSource).saveUser(null);
         try {
             userReposoritory.saveUser(null);
             fail("Não lancou ex do tipo correto");
@@ -97,8 +98,9 @@ public class UserReposoritoryTest {
     public void getUser_throwsError_repositoryWrapInException() {
         String errorMsg = "Id passado é nulo";
 
+        Mockito.doThrow(new IllegalArgumentException(errorMsg)).when(userSource).getUser(Mockito.anyString());
         try {
-            userReposoritory.getUser(null);
+            userReposoritory.getUser("id valido");
             fail("Não lancou ex do tipo correto");
         } catch (RepositoryException e) {
             if (e.getCause() instanceof IllegalArgumentException) {

@@ -14,7 +14,11 @@ public class UserReposoritory implements IUserRepository {
     @Override
     public UserModel getUser(String id) throws RepositoryException {
         UserModel user;
-        user = userSource.getUser(id);
+        try {
+            user = userSource.getUser(id);
+        } catch (Exception e) {
+            throw new RepositoryException(e);
+        }
 
         return user;
     }
