@@ -52,7 +52,9 @@ public class ImportJsonTest {
 
     @Test
     public void importaArquivosDaPasta_comNomeDeArquivoValido() {
+    	 importJson.importJsonDir("dir");
 
+    	 Mockito.verify(dao).create(Mockito.any(Book.class));
     }
 
     @Test

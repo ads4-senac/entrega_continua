@@ -1,0 +1,17 @@
+Index: ../.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>## Ignore de repositorio geral\n\n# Ignora arquivos adicionais na raiz do projeto\n*.*
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../.gitignore	(date 1568420254000)
++++ ../.gitignore	(date 1568420190000)
+@@ -1,4 +1,4 @@
+ ## Ignore de repositorio geral
+ 
+ # Ignora arquivos adicionais na raiz do projeto
+-*.*
+\ No newline at end of file
++#*.*
+\ No newline at end of file
