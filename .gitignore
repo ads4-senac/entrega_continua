@@ -1,4 +1,4 @@
 ## Ignore de repositorio geral
 
 # Ignora arquivos adicionais na raiz do projeto
-#*.*
+/*
