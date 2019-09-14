@@ -1,10 +1,12 @@
 package dev.alexferreira;
 
 import com.google.gson.Gson;
-
+import dev.alexferreira.projetobasico.Book;
+import dev.alexferreira.projetobasico.DaoInterface;
+import dev.alexferreira.projetobasico.ImportJson;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -12,10 +14,6 @@ import org.mockito.MockitoAnnotations;
 import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
-
-import dev.alexferreira.projetobasico.Book;
-import dev.alexferreira.projetobasico.DaoInterface;
-import dev.alexferreira.projetobasico.ImportJson;
 
 public class ImportJsonTest {
 
@@ -52,6 +50,13 @@ public class ImportJsonTest {
 
     @Test
     public void importaArquivosDaPasta_comNomeDeArquivoValido() {
+		// TODO: 14/09/19 Criar uma pasta no res
+
+		// TODO: 14/09/19 Criar Uri de pasta, similar do test test_importaArquivo_comNomeDeArquivoValido()
+
+		// TODO: 14/09/19 Criar arquivo com URI
+
+		// TODO: 14/09/19 Substituir "dir" com file.getAbsolutePath()
     	 importJson.importJsonDir("dir");
 
     	 Mockito.verify(dao).create(Mockito.any(Book.class));
@@ -59,12 +64,22 @@ public class ImportJsonTest {
 
     @Test
     public void validaArquivo_retornaTrue_arquivoValido() {
+		// TODO: 14/09/19 Criar Uri de arquivo, similar do test test_importaArquivo_comNomeDeArquivoValido()
 
+		// TODO: 14/09/19 Criar arquivo com URI
+
+		// TODO: 14/09/19 Substituir null com file.getAbsolutePath()
+		Assert.assertTrue(importJson.validateJsonFile(null));
     }
 
     @Test
     public void validaArquivo_retornaFalse_arquivoInvalido() {
+		// TODO: 14/09/19 Criar Uri de arquivo, similar do test test_importaArquivo_comNomeDeArquivoValido()
 
+		// TODO: 14/09/19 Criar arquivo com URI
+
+		// TODO: 14/09/19 Substituir null com file.getAbsolutePath()
+		Assert.assertFalse(importJson.validateJsonFile(null));
     }
 
     @Test

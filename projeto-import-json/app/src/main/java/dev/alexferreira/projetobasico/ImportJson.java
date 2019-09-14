@@ -2,14 +2,11 @@ package dev.alexferreira.projetobasico;
 
 import com.google.gson.Gson;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
-public class ImportJson implements IIMportJson {
+public class ImportJson implements IImportJson {
 
     private DaoInterface dao;
     private Gson gson;
@@ -49,12 +46,12 @@ public class ImportJson implements IIMportJson {
     }
 
     @Override
-    public void validateJsonFile(String fileName) {
-
+    public boolean validateJsonFile(String fileName) {
+		return false;
     }
 
     @Override
-    public void validateJsonDir(String fileDir) {
-
+    public boolean validateJsonDir(String fileDir) {
+		return false;
     }
 }
