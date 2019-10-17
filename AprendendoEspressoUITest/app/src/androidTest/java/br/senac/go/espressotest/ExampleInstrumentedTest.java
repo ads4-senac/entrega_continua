@@ -36,6 +36,6 @@ public class ExampleInstrumentedTest {
 
 	@Test
 	public void whenStart_showTextHello() {
-		Espresso.onView(ViewMatchers.withId(R.id.tv_hello)).check(ViewAssertions.matches(ViewMatchers.withText("Hello World!")))
+		Espresso.onView(ViewMatchers.withId(R.id.tv_hello)).check(ViewAssertions.matches(ViewMatchers.withText("Hello World!")));
 	}
 }
