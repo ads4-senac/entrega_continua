@@ -59,8 +59,8 @@ public class ExampleInstrumentedTest {
 
 	@Test
 	public void whenSelectBotaoAbrirTela_startIntent() {
-		Intents.intending(IntentMatchers.hasComponent(ComponentNameMatchers.hasClassName(Tela2Activity.class.getName())))
 		Espresso.onView(ViewMatchers.withId(R.id.bt_abrir_tela2))
 				.perform(ViewActions.click());
+		Intents.intended(IntentMatchers.hasComponent(ComponentNameMatchers.hasClassName(Tela2Activity.class.getName())));
 	}
 }
