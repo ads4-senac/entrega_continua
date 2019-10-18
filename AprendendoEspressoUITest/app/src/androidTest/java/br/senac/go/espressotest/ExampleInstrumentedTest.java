@@ -1,20 +1,17 @@
 package br.senac.go.espressotest;
 
 import android.content.Context;
-import androidx.test.InstrumentationRegistry;
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.matcher.ViewMatchers;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
-
 import org.hamcrest.Matchers;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.util.regex.Matcher;
 
 import static org.junit.Assert.assertEquals;
 
@@ -33,7 +30,7 @@ public class ExampleInstrumentedTest {
 	@Test
 	public void useAppContext() {
 		// Context of the app under test.
-		Context appContext = InstrumentationRegistry.getTargetContext();
+		Context appContext = ApplicationProvider.getApplicationContext();
 
 		assertEquals("br.senac.go.espressotest", appContext.getPackageName());
 	}
