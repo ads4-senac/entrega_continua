@@ -1,16 +1,17 @@
 package br.senac.go.espressotest;
 
 import android.content.Context;
+
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.intent.Intents;
-import androidx.test.espresso.intent.matcher.ComponentNameMatchers;
 import androidx.test.espresso.intent.matcher.IntentMatchers;
+import androidx.test.espresso.intent.rule.IntentsTestRule;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.rule.ActivityTestRule;
+
 import org.hamcrest.Matchers;
 import org.junit.Rule;
 import org.junit.Test;
@@ -27,8 +28,8 @@ import static org.junit.Assert.assertEquals;
 public class ExampleInstrumentedTest {
 
 	@Rule
-	public ActivityTestRule<MainActivity> activityRule =
-			new ActivityTestRule<>(MainActivity.class);
+    public IntentsTestRule<MainActivity> mActivityRule = new IntentsTestRule<>(
+            MainActivity.class);
 
 	@Test
 	public void useAppContext() {
@@ -61,6 +62,6 @@ public class ExampleInstrumentedTest {
 	public void whenSelectBotaoAbrirTela_startIntent() {
 		Espresso.onView(ViewMatchers.withId(R.id.bt_abrir_tela2))
 				.perform(ViewActions.click());
-		Intents.intended(IntentMatchers.hasComponent(ComponentNameMatchers.hasClassName(Tela2Activity.class.getName())));
+        Intents.intended(IntentMatchers.hasComponent(Tela2Activity.class.getName()));
 	}
 }
