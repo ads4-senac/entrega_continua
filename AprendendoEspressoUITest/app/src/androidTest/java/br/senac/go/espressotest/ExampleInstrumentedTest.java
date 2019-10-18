@@ -5,6 +5,9 @@ import androidx.test.core.app.ApplicationProvider;
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.assertion.ViewAssertions;
+import androidx.test.espresso.intent.Intents;
+import androidx.test.espresso.intent.matcher.ComponentNameMatchers;
+import androidx.test.espresso.intent.matcher.IntentMatchers;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
@@ -54,4 +57,10 @@ public class ExampleInstrumentedTest {
 				.check(ViewAssertions.matches(Matchers.allOf(ViewMatchers.withText("Texto escondido"), ViewMatchers.isCompletelyDisplayed())));
 	}
 
+	@Test
+	public void whenSelectBotaoAbrirTela_startIntent() {
+		Intents.intending(IntentMatchers.hasComponent(ComponentNameMatchers.hasClassName(Tela2Activity.class.getName())))
+		Espresso.onView(ViewMatchers.withId(R.id.bt_abrir_tela2))
+				.perform(ViewActions.click());
+	}
 }
